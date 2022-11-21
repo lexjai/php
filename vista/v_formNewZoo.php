@@ -85,7 +85,9 @@
 
             <?php if(isset($_GET['id'])){  include 'v_formEditarZoo.php'; } else if(isset($_GET['name'])){
               include "vformAgregarAnimal.php";
-            }else {?>
+            }else if(isset($_GET['editar'])) {
+              include "vformEditarAnimal.php";
+            }else{?>
              <form action="c_insertarZoo.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">

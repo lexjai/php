@@ -1,5 +1,3 @@
-
-
 <?php foreach($aElementos as $item){ ?>
 <form action="c_cambiarZoo.php?id=<?php echo $_GET['id'] ?>" method="post" role="form" class="php-email-form">
               <div class="row">

@@ -21,10 +21,7 @@ class ZooModelo extends Conexion implements Modelos
             $retorno = $fila;
         }
          return $retorno;
-        //TODO examen
-        //devuelve el id max para poder insertar un nuevo zoo
-        //SELECT max(id) as maximo FROM `zoos` WHERE 1;
-        //en caso de que no haya ningun registro return -1
+       
     }
 
     public function update($itemAssoc)

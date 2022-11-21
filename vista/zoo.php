@@ -79,24 +79,32 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
-                       <?php foreach ($aElementos as $valor) { ?>
-                
+                <?php foreach ($aElementos as $valor) { ?>
+
                 <div class="row gy-4 justify-content-center">
                     <div class="col-lg-4">
                         <img src="<?php echo $valor['foto']; ?>" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-5 content">
-                        <h2>Bienvenidos al zoo <?php echo $valor['nombre']; ?> examen nombre del zoo</h2>
+                        <h2>Bienvenidos al zoo
+                            <?php echo $valor['nombre']; ?> examen nombre del zoo
+                        </h2>
                         <p class="fst-italic py-3">
 
                         </p>
                         <div class="row">
                             <div class="col-lg-12">
                                 <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Ciudad:<?php echo $valor['ciudad']; ?></strong> <span>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Ciudad:
+                                            <?php echo $valor['ciudad']; ?>
+                                        </strong> <span>
                                             ciudad</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Direccion:<?php echo $valor['direccion']; ?></strong> <span>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Pais: <?php echo $valor['pais']; ?></strong> <span>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Direccion:
+                                            <?php echo $valor['direccion']; ?>
+                                        </strong> <span>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Pais:
+                                            <?php echo $valor['pais']; ?>
+                                        </strong> <span>
                                             Pais</span></li>
                                 </ul>
                             </div>
@@ -107,13 +115,16 @@
                         </p>
                     </div>
                 </div>
-                        <?php } ?>
+                <?php } ?>
 
             </div>
             <div class="d-flex tex-center justify-content-center gap-2">
-            <a class="btn cta-btn border-secondary" href="c_eliminarZoo.php?id=<?php echo $_GET['id']?>">Eliminar zoo</a>
-            <a class="btn cta-btn border-secondary" href="c_editarZoo.php?id=<?php echo $_GET['id']?>">Editar zoo</a>
-            <a class="btn cta-btn border-secondary" href="c_agregarAnimal.php?name=<?php echo $_GET['id']?>">Agregaer Animal</a>
+                <a class="btn cta-btn border-secondary" href="c_eliminarZoo.php?id=<?php echo $_GET['id'] ?>">Eliminar
+                    zoo</a>
+                <a class="btn cta-btn border-secondary" href="c_editarZoo.php?id=<?php echo $_GET['id'] ?>">Editar
+                    zoo</a>
+                <a class="btn cta-btn border-secondary" href="c_agregarAnimal.php?name=<?php echo $_GET['id'] ?>">Agregar
+                    Animal</a>
 
             </div>
 
@@ -134,8 +145,7 @@
 
                         <!-- //TODO un card por cada animal -->
                         <!-- Ini card animal item -->
-                       <?php foreach ($aElementos2 as $valor) { ?>
-                        
+                        <?php foreach ($aElementos2 as $valor) { ?>
                         <div class="swiper-slide">
                             <div class="testimonial-item">
                                 <div class="stars">
@@ -146,14 +156,23 @@
 
                                 <div class="profile mt-auto">
                                     <img src="<?php echo $valor['foto'] ?>" class="testimonial-img" alt="">
-                                    <h3><?php echo $valor['nombre'] ?></h3>
-                                    <h4><?php echo $valor['nombre_cientifico'] ?></h4>
+                                    <h3>
+                                        <?php echo $valor['nombre'] ?>
+                                    </h3>
+                                    <h4>
+                                        <?php echo $valor['nombre_cientifico'] ?>
+                                    </h4>
                                 </div>
                                 <p class="mt-2">
                                     <?php echo $valor['descripcion'] ?>
                                 </p>
+                                <div class="footer gap-2 d-grid">
+                                    <a type="btn " href="cEliminarAnimal.php?id=<?php echo $valor['id'] ?>">Eliminar</a>
+                                    <a type="btn " href="cEditarAnimal.php?editar=<?php echo $valor['id'] ?>">Editar</a>
+                                </div>
                             </div>
-                        </div><!-- End card animal item -->
+
+                        </div>
                         <?php } ?>
 
                     </div>

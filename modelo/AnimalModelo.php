@@ -16,11 +16,18 @@ class AnimalModelo extends Conexion implements Modelos
 
     public function selectById($id)
     {
-        
+        $query = parent::con()->query("SELECT * FROM animals WHERE id = '$id' ");
+        $retorno = [];
+
+      while ($fila = $query->fetch_assoc()) {
+          $retorno[] = $fila;
+      }
+
+      return $retorno;
     }
     
     public function selectAnimalsByZoo($idZoo){
-        $query = parent::con()->query("SELECT * FROM animals WHERE id = '$idZoo' ");
+        $query = parent::con()->query("SELECT * FROM animals WHERE zoo_id ='$idZoo'");
           $retorno = [];
 
         while ($fila = $query->fetch_assoc()) {
@@ -28,11 +35,7 @@ class AnimalModelo extends Conexion implements Modelos
         }
 
         return $retorno;
-        
-        //TODO examen
-        //SELECT * FROM animals where zoo_id=$idZoo
-        //devuelve un array de animales en formato array asociativo
-        
+     
 
     }
 
@@ -46,31 +49,51 @@ class AnimalModelo extends Conexion implements Modelos
         }
 
         return $retorno;
-        //TODO examen
-        //devuelve un array de animales en formato array asociativo
+        
     }
 
     public function maxIdZoo()
     {
-        //TODO examen
-        //devuelve el id max para poder insertar un nuevo zoo
-        //SELECT max(id) as maximo FROM `zoos` WHERE 1;
-        //en caso de que no haya ningun registro return -1
+        $query = parent::con()->query("SELECT max(id) as maximo FROM `animals`");
+        $retorno = -1;
+
+        while ($fila = $query->fetch_assoc()) {
+            $retorno = $fila;
+        }
+         return $retorno;
     }
 
     public function update($itemAssoc)
-    {
+    { 
+        $zoo = $itemAssoc['id_zoo'];
+        $idAnimal = $itemAssoc['id_animal'];
+        $nombre = $itemAssoc['nombre'];
+        $foto = $itemAssoc['foto'];
+        $nombreC = $itemAssoc['nombre_c'];
+        $descripcion = $itemAssoc['descripcion'];
+        parent::con()->query("UPDATE `animals` SET `nombre`='$nombre',`foto`='$foto',`nombre_cientifico`='$nombreC',`descripcion`='$descripcion',`zoo_id`='$zoo' WHERE id='$idAnimal'");
+
+        // UPDATE `animals` SET `id`='[value-1]',`nombre`='[value-2]',`foto`='[value-3]',`nombre_cientifico`='[value-4]',`descripcion`='[value-5]',`zoo_id`='[value-6]' WHERE 1
     }
   public function delete($id)
     {
+        parent::con()->query("DELETE FROM animals WHERE id = '$id'");
+
     }
 
     public function insert($itemAssoc)
     {
-        //TODO examen
-        //recive un zoo en formato array asociativo
-        //lo inserta en la BBDD
-        //tener en cuenta que el id de zoo es pk pero no es auto incrementable
+        $idAnimal = $itemAssoc['id_animal'];
+        $idZoo = $itemAssoc['id_zoo'];
+        $nombre = $itemAssoc['nombre'];
+        $foto = $itemAssoc['foto'];
+        $nombreC = $itemAssoc['nombre_c'];
+        $descripcion = $itemAssoc['descripcion'];
+
+        parent::con()->query(
+            "INSERT INTO animals (`id`,`nombre`, `foto`, `nombre_cientifico`, `descripcion`, `zoo_id`) VALUES 
+            ('$idAnimal','$nombre','$foto','$nombreC','$descripcion','$idZoo')"
+        );
     }
 
 }
